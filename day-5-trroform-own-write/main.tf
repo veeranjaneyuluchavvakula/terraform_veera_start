@@ -95,3 +95,15 @@ resource "aws_security_group" "name" {
     
   
 }
+
+resource "aws_instance" "name" {
+    ami = "abcis"
+    instance_type = "t3.micro"
+    key_name = "veera"
+    subnet_id = aws_subnet.sub.id
+    vpc_security_group_ids = [aws_security_group.name.id]
+    tags = {
+      Name = "ec2-instance"
+    }
+  
+}
